@@ -32,7 +32,7 @@ Steps used to initialize the database are reported in the code at
 
 The origin file containing population for database is <code>fr-en-annuaire-education.csv</code> , a <code>.csv</code> file with <code>;</code> delimiter. <br><br>
 The script reads the <code>.csv</code> file and converts to json object using appropriate options described in the variable <code>opt</code>. <br><br>
-From the resulting json object is obtained an object where the 'position' field value is adjusted to GeoJSON Point Type format.<br><br>
+From the resulting json object is obtained an object where the </code>position</code> field value is adjusted to GeoJSON Point Type format.<br><br>
 The entities where <code>postiion</code> value is not defined have been set with a default <code>[0,0]</code> value as coordinates.<br><br>
 Then the index <code>{ position : '2dsphere' }</code> is created.<br><br>
 The script exits.
