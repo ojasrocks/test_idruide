@@ -11,7 +11,7 @@ Database:
 MongoDB. Considered installed in localhost
 
 Bonus:
-- Search by Geo Localization : In the Controller is present, but commented, the part of code that sets the filter for geolocalization.<br> The reason of this choice is because is thrown the error <code>$geoNear, $near, and $nearSphere are not allowed in this context</code>, and has to be investigated. <br><br>This has to be fixed. When performing geo search on <code>shell</code> using <code>mongosh</code> the database doesn't throw error. 
+- Search by Geo Localization : In the Controller is present, but commented, the part of code that sets the filter for geolocalization.<br> The reason of this choice is because is thrown the error <code>$geoNear, $near, and $nearSphere are not allowed in this context</code>, and has to be fixed. <br><br> When performing geo search on <code>shell</code> using <code>mongosh</code> the database doesn't throw error. 
 
 - GraphQL API : Not completed
 
