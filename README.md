@@ -5,7 +5,7 @@ The request for the Test was to setup a REST API in NodeJS using NestJS framewor
 - Postal Code : 'Code postal'
 - administrative divisions : 'Libelle_region'  
 - unique identifier : 'Identifiant_de_l_etablissement'
-- type of schools : 'Type_etablissement
+- type of schools : 'Type_etablissement'
 
 Database:
 MongoDB. Considered installed in localhost
