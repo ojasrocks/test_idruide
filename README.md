@@ -28,7 +28,7 @@ if operator wants to initialize the database and then start NestJS server the co
 
 Steps used to initialize the database are reported in the code at 
 
-src/institutions/seeding/csv_to_json/csv_json.js
+<code>src/institutions/seeding/csv_to_json/csv_json.js</code>
 
 The origin file containing population for database is fr-en-annuaire-education.csv , a ".csv" file with ';' delimiter.
 The script reads the file and converts to json object using appropriate options described in the variable 'opt'.
