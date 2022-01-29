@@ -11,8 +11,9 @@ Database:
 MongoDB. Considered installed in localhost
 
 Bonus:
-- Search by Geo Localization : 
-- GraphQL API : 
+- Search by Geo Localization : In the Controller is present, but commented, the part of code that sets the filter for geolocalization.<br> The reason of this choice is because is thrown the error <code>$geoNear, $near, and $nearSphere are not allowed in this context</code>, and has to be investigated. <br><br>This has to be fixed. When performing geo search on <code>shell</code> using <code>mongosh</code> the database doesn't throw error. 
+
+- GraphQL API : Not completed
 
 How to initialize the database.
 
@@ -37,3 +38,7 @@ The entities where <code>postiion</code> value is not defined have been set with
 Then the index <code>{ position : '2dsphere' }</code> is created.<br><br>
 The script exits.
 
+# Conclusions
+
+The base task has been completed.<br><br>
+Remaining bouns(es) require fix work.
