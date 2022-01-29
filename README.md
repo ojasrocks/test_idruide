@@ -30,8 +30,8 @@ Steps used to initialize the database are reported in the code at
 
 <code>src/institutions/seeding/csv_to_json/csv_json.js</code>
 
-The origin file containing population for database is <code>fr-en-annuaire-education.csv</code> , a ".csv" file with ';' delimiter. <br><br>
-The script reads the file and converts to json object using appropriate options described in the variable 'opt'. <br><br>
+The origin file containing population for database is <code>fr-en-annuaire-education.csv</code> , a <code>.csv</code> file with <code>;</code> delimiter. <br><br>
+The script reads the <code>.csv</code> file and converts to json object using appropriate options described in the variable 'opt'. <br><br>
 From the resulting json object is obtained an object where the 'position' field value is adjusted to GeoJSON Point Type format.<br><br>
 The entities where 'postiion' value is not defined have been set with a default [0,0] value as coordinates.<br><br>
 Then the index { position : '2dsphere' } is created.<br><br>
