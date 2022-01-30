@@ -35,7 +35,8 @@ The url containing population for database is <code>https://data.education.gouv.
 
 The script does fetch the <code>.csv</code> file and converts it to json object using appropriate options described in the variable <code>opt</code>. <br>
 
-From the resulting json object is obtained an object where the <code>position</code> field value is adjusted to GeoJSON Point Type format, and where the origin key field 'Code postal' is substituted with 'Code_postal'.<br>
+From the resulting json object is obtained an object where the <code>position</code> field value is adjusted to GeoJSON Point Type format.
+The key 'Code postal' is substituted with 'Code_postal' to avoid spaces in key name.<br>
 
 The entities where <code>position</code> value is not defined have been set with a default <code>[0,0]</code> value as coordinates.<br>
 
