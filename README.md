@@ -15,7 +15,7 @@ Bonus:
 
 - GraphQL API : Completed
 
-## How to initialize the database.
+## How to initialize the database
 
 If operator wants to initialize the database and start the NestJS server in second time can run 
 
