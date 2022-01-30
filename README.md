@@ -37,7 +37,7 @@ The script does fetch the <code>.csv</code> file and converts it to json object 
 
 From the resulting json object is obtained an object where the </code>position</code> field value is adjusted to GeoJSON Point Type format, and where the origin key field 'Code postal' is substituted with 'Code_postal'.<br>
 
-The entities where <code>postiion</code> value is not defined have been set with a default <code>[0,0]</code> value as coordinates.<br>
+The entities where <code>position</code> value is not defined have been set with a default <code>[0,0]</code> value as coordinates.<br>
 
 Then the index <code>{ position : '2dsphere' }</code> is created.<br>
 
