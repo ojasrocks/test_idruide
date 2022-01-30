@@ -45,9 +45,6 @@ Then the index <code>{ position : '2dsphere' }</code> is created.<br>
 The script exits.
 <br>
 
-### Note ###
-Direct access to a JSON file could be obtained modifing the url to fetch in 
-<code>https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/download/?format=json&timezone=Europe/Berlin&lang=en</code>
 # Conclusions
 
 The base task and bounuses have been completed.
