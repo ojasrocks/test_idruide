@@ -1,7 +1,8 @@
 import { InstitutionsService } from './institutions.service';
-import { QueryArgs } from './graphqlquery.args';
+import { AllArgs, QueryArgs } from './graphqlquery.args';
 export declare class InstitutionsResolver {
     private readonly service;
     constructor(service: InstitutionsService);
-    graphreq(arg: QueryArgs): Promise<any>;
+    getAll(arg: AllArgs): Promise<any>;
+    find(arg: QueryArgs): Promise<any>;
 }

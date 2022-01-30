@@ -9,40 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.inputArgs = void 0;
+exports.DataResponse = void 0;
+const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
-const institutions_schema_1 = require("./institutions.schema");
-class inputArgs {
-}
+let DataResponse = class DataResponse {
+};
 __decorate([
-    (0, class_validator_1.IsObject)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", institutions_schema_1.Institution)
-], inputArgs.prototype, "filter", void 0);
-__decorate([
-    (0, class_validator_1.IsNumberString)(),
-    (0, class_validator_1.IsOptional)(),
+    (0, graphql_1.Field)(() => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], inputArgs.prototype, "longitude", void 0);
+], DataResponse.prototype, "Identifiant_de_l_etablissement", void 0);
 __decorate([
-    (0, class_validator_1.IsNumberString)(),
-    (0, class_validator_1.IsOptional)(),
+    (0, graphql_1.Field)(() => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], inputArgs.prototype, "latitude", void 0);
+], DataResponse.prototype, "Type_etablissement", void 0);
 __decorate([
-    (0, class_validator_1.IsNumberString)(),
-    (0, class_validator_1.IsOptional)(),
+    (0, graphql_1.Field)(() => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], inputArgs.prototype, "range", void 0);
+], DataResponse.prototype, "Libelle_region", void 0);
 __decorate([
-    (0, class_validator_1.IsNumberString)(),
-    (0, class_validator_1.IsOptional)(),
+    (0, graphql_1.Field)(() => String),
+    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], inputArgs.prototype, "page", void 0);
-__decorate([
-    (0, class_validator_1.IsNumberString)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], inputArgs.prototype, "limit", void 0);
-exports.inputArgs = inputArgs;
-//# sourceMappingURL=input.schema.js.map
+], DataResponse.prototype, "Code_postal", void 0);
+DataResponse = __decorate([
+    (0, graphql_1.ObjectType)()
+], DataResponse);
+exports.DataResponse = DataResponse;
+//# sourceMappingURL=data.schema.js.map

@@ -20,7 +20,7 @@ __decorate([
     __metadata("design:type", String)
 ], Position.prototype, "type", void 0);
 __decorate([
-    (0, graphql_1.Field)(() => [Number]),
+    (0, graphql_1.Field)(() => [graphql_1.Float]),
     __metadata("design:type", Array)
 ], Position.prototype, "coordinates", void 0);
 Position = __decorate([
@@ -32,6 +32,10 @@ __decorate([
     (0, graphql_1.Field)(() => String),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], Institution.prototype, "_id", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String),
+    __metadata("design:type", String)
+], Institution.prototype, "createdAt", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String),
     (0, mongoose_1.Prop)(),

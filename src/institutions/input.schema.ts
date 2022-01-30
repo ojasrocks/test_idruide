@@ -1,4 +1,4 @@
-import { IsNumberString , IsOptional } from 'class-validator';
+import { IsNumberString , IsOptional , IsArray } from 'class-validator';
 
 export class inputArgs {
 
@@ -12,7 +12,7 @@ export class inputArgs {
 
     @IsNumberString()
     @IsOptional()
-    km_radius?: string
+    range?: string
     
     @IsNumberString()
     @IsOptional()

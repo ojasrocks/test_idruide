@@ -1,32 +1,37 @@
-import { ArgsType, Field } from '@nestjs/graphql';
-import { IsNumber , IsOptional} from 'class-validator';
+import { ArgsType, Field, Float, Int } from '@nestjs/graphql';
+import { IsNumber , IsArray, IsOptional} from 'class-validator';
 
 @ArgsType()
-export class QueryArgs {
-  
-  @Field()
-  @IsOptional()
-  @IsNumber()
-  longitude?: number
-
-  @Field()
-  @IsOptional()
-  @IsNumber()
-  latitude?: number
-
-  @Field()
-  @IsOptional()
-  @IsNumber()
-  km_radius?: number
-  
-  @Field()
+export class AllArgs{
+  @Field(()=> Int)
   @IsOptional()
   @IsNumber()
   page?: number
 
-  @Field()
+  @Field(()=> Int)
   @IsOptional()
   @IsNumber()
   limit?: number
-
 }
+
+
+
+@ArgsType()
+export class QueryArgs extends AllArgs {
+  
+  @Field(()=> Float)
+  @IsOptional()
+  @IsNumber()
+  longitude?: number
+
+  @Field(()=> Float)
+  @IsOptional()
+  @IsNumber()
+  latitude?: number
+
+  @Field(()=> Float)
+  @IsOptional()
+  @IsNumber()
+  range?: number
+}
+

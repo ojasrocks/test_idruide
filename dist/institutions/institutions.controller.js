@@ -20,7 +20,39 @@ let InstitutionsController = class InstitutionsController {
     constructor(service) {
         this.service = service;
     }
-    async requested(args) {
+    async getAll(args) {
+        const selected = [
+            'Identifiant_de_l_etablissement',
+            'Code_postal',
+            'Type_etablissement',
+            'Libelle_region'
+        ];
+        const query = this.service.find({}).select(selected);
+        const page = parseInt(args.page) || 1;
+        const limit = parseInt(args.limit) || 10;
+        const total = await this.service.count({});
+        const temp_data = await query.skip((page - 1) * limit).limit(limit).exec();
+        const data = temp_data.map(element => {
+            let obj = {};
+            Object.entries(element).forEach(([key, value]) => {
+                if (key === "_doc") {
+                    Object.entries(value).forEach(([keyy, valuee]) => {
+                        if (keyy !== "_id") {
+                            obj[keyy] = valuee;
+                        }
+                    });
+                }
+            });
+            return obj;
+        });
+        return {
+            data,
+            total,
+            page,
+            last_page: Math.ceil(total / limit)
+        };
+    }
+    async find(args) {
         let opt = {};
         const selected = [
             'Identifiant_de_l_etablissement',
@@ -28,20 +60,20 @@ let InstitutionsController = class InstitutionsController {
             'Type_etablissement',
             'Libelle_region'
         ];
-        if (args.latitude && args.longitude && parseFloat(args.latitude) > -180 && parseFloat(args.latitude) < 180 && parseFloat(args.longitude) > -180 && parseFloat(args.longitude) < 180) {
-            let range = 20000;
-            if (args.km_radius)
-                range = Math.round(parseFloat(args.km_radius) * 1000);
-            opt = {
-                position: {
+        if (args.filter)
+            opt = args.filter;
+        if (args.latitude && args.longitude && Math.abs(parseFloat(args.latitude)) <= 180 && Math.abs(parseFloat(args.longitude)) <= 180) {
+            let shift = 2;
+            if (args.range)
+                shift = Math.abs(parseFloat(args.range));
+            opt = Object.assign(Object.assign({}, opt), { position: {
                     $geoWithin: {
                         $box: [
-                            [parseFloat(args.latitude) - range, parseFloat(args.longitude) - range],
-                            [parseFloat(args.latitude) + range, parseFloat(args.longitude) + range]
+                            [parseFloat(args.latitude) - shift, parseFloat(args.longitude) - shift],
+                            [parseFloat(args.latitude) + shift, parseFloat(args.longitude) + shift]
                         ]
                     }
-                }
-            };
+                } });
         }
         const query = this.service.find(opt).select(selected);
         const page = parseInt(args.page) || 1;
@@ -70,12 +102,19 @@ let InstitutionsController = class InstitutionsController {
     }
 };
 __decorate([
-    (0, common_1.Get)('api'),
+    (0, common_1.Get)('all'),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [input_schema_1.inputArgs]),
     __metadata("design:returntype", Promise)
-], InstitutionsController.prototype, "requested", null);
+], InstitutionsController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Get)('find'),
+    __param(0, (0, common_1.Query)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [input_schema_1.inputArgs]),
+    __metadata("design:returntype", Promise)
+], InstitutionsController.prototype, "find", null);
 InstitutionsController = __decorate([
     (0, common_1.Controller)('institutions'),
     __metadata("design:paramtypes", [institutions_service_1.InstitutionsService])

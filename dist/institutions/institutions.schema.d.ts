@@ -6,6 +6,7 @@ declare class Position {
 }
 export declare class Institution {
     _id: Types.ObjectId;
+    createdAt: string;
     Identifiant_de_l_etablissement: string;
     Nom_etablissement: string;
     Type_etablissement: string;

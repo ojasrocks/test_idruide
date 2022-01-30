@@ -11,11 +11,12 @@ export class InstitutionsService {
     private readonly logger = new Logger(InstitutionsService.name);
 
     find(options : any){
-        this.logger.log(`Searching`);
+        this.logger.log(`Searching...`);
         return this.institution.find(options);
     }
     
     count(options : any){
         return this.institution.count(options).exec();
     }
+
 }

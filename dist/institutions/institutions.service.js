@@ -24,7 +24,7 @@ let InstitutionsService = InstitutionsService_1 = class InstitutionsService {
         this.logger = new common_1.Logger(InstitutionsService_1.name);
     }
     find(options) {
-        this.logger.log(`Searching`);
+        this.logger.log(`Searching...`);
         return this.institution.find(options);
     }
     count(options) {

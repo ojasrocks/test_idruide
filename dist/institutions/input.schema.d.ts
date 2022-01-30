@@ -1,7 +1,9 @@
+import { Institution } from './institutions.schema';
 export declare class inputArgs {
+    filter?: Institution;
     longitude?: string;
     latitude?: string;
-    km_radius?: string;
+    range?: string;
     page?: string;
     limit?: string;
 }

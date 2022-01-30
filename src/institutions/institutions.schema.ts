@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, Float, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
@@ -8,7 +8,7 @@ export type InstitutionDocument = Institution & Document;
 class Position{
         @Field(() => String)
         type: string
-        @Field(()=> [Number])
+        @Field(()=> [Float])
         coordinates: Array<number>
 }
 
@@ -19,6 +19,9 @@ export class Institution {
     @Field(() => String)
     _id: Types.ObjectId;
     
+    @Field(() => String)
+    createdAt: string;
+
     @Field(() => String)
     @Prop()
     Identifiant_de_l_etablissement: string
