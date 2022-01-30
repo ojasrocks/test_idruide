@@ -34,7 +34,15 @@ const client = new MongoClient(mongo_url);
         coordinates : [0.0000000,0.0000000]
       }
     }
-    return buff;
+    let obj = {};
+    Object.entries(buff).forEach(([key, value]) => {
+      if (key !== "Code postal"){
+          obj[key] = value
+      }else {
+          obj.Code_postal = value
+      }
+  } )
+    return obj;
   })
   
   client.connect(async (err)=>{
