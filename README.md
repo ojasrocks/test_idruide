@@ -15,7 +15,7 @@ Bonus:
 
 - GraphQL API : Completed
 
-How to initialize the database.
+## How to initialize the database.
 
 If operator wants to initialize the database and start the NestJS server in second time can run 
 
@@ -25,7 +25,7 @@ if operator wants to initialize the database and then start NestJS server the co
 
 <code>yarn run seed:start</code>
 
-# Descrition of Database initialization
+# Descrition of Database initialization script
 
 Steps used to initialize the database are reported in the code at 
 
