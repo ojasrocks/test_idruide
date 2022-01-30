@@ -1,4 +1,4 @@
-import { Resolver , Query, Args } from '@nestjs/graphql';
+import { Resolver , Query, Args, Mutation } from '@nestjs/graphql';
 import { Institution } from './institutions.schema';
 import { InstitutionsService } from './institutions.service';
 import { AllArgs, QueryArgs } from './graphqlquery.args'
@@ -56,6 +56,14 @@ export class InstitutionsResolver {
             'Libelle_region'
         ]
         
+        if (arg.filter) {
+            arg.filter.forEach(([key,value]) => {
+                try{
+                const inverted = value.replace(/'+/g,'£').replace(/"+/g,"'").replace(/£+/g,'"')
+                opt[key] = JSON.parse(inverted)
+                }catch(e){}
+            })
+        }
         // In case position is provided in query
         // a GeoJSON 
         

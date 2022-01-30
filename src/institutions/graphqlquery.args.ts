@@ -15,10 +15,14 @@ export class AllArgs{
 }
 
 
-
 @ArgsType()
 export class QueryArgs extends AllArgs {
   
+  @Field(()=>[[String,String]])
+  @IsOptional()
+  @IsArray()
+  filter?: [[string,string]]
+
   @Field(()=> Float)
   @IsOptional()
   @IsNumber()
