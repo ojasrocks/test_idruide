@@ -15,9 +15,10 @@ export class InstitutionsController {
     @Get('api')
     async requested(@Query() args : inputArgs){
         let opt = {};
+        
         const selected = [
             'Identifiant_de_l_etablissement',
-            'Code postal',
+            'Code_postal',
             'Type_etablissement',
             'Libelle_region'
         ]
@@ -25,25 +26,21 @@ export class InstitutionsController {
         // In case position is provided in query
         // a GeoJSON        
         
-        if (args.latitude && args.longitude && parseFloat(args.latitude)> -180 && parseFloat(args.latitude) < 180 && parseFloat(args.longitude) > -180 && parseFloat(args.longitude)<180){
-            const point_position = [parseFloat(args.latitude),parseFloat(args.longitude)]
-            
+        if (args.latitude && args.longitude && parseFloat(args.latitude)> -180 && parseFloat(args.latitude) < 180 && parseFloat(args.longitude) > -180 && parseFloat(args.longitude)<180)
+        {
             let range = 20000; // default range 20 km
-            if (args.km_range) range = Math.round(parseFloat(args.km_range)*1000) // reference unit in input 1 km
+            if (args.km_radius) range = Math.round(parseFloat(args.km_radius)*1000) 
             
             opt = {
                 position: {
-                    $near : {
-                        $geometry: {
-                            "type": "Point" ,
-                            coordinates: point_position
-                        },
-                        $maxDistance: range,
-                        $minDistance: 0
+                    $geoWithin : {
+                        $box: [
+                            [parseFloat(args.latitude)-range,parseFloat(args.longitude)-range],
+                            [parseFloat(args.latitude)+range,parseFloat(args.longitude)+range]
+                        ]
                     }
                 }
             }
-            
         }
         
         const query = this.service.find(opt).select(selected);

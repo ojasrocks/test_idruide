@@ -1,5 +1,5 @@
 import { Resolver , Query, Args } from '@nestjs/graphql';
-import { GqInstitution } from './graphqlinstitution.schema';
+import { Institution } from './institutions.schema';
 import { InstitutionsService } from './institutions.service';
 import { QueryArgs } from './graphqlquery.args'
 
@@ -7,12 +7,12 @@ import { QueryArgs } from './graphqlquery.args'
 export class InstitutionsResolver {
     constructor(private readonly service: InstitutionsService) {}
 
-    @Query(returns => [GqInstitution])
+    @Query(returns => [Institution])
     async graphreq(@Args() arg:QueryArgs): Promise<any> {
         let opt = {};
         const selected = [
             'Identifiant_de_l_etablissement',
-            'Code postal',
+            'Code_postal',
             'Type_etablissement',
             'Libelle_region'
         ]
@@ -20,25 +20,23 @@ export class InstitutionsResolver {
         // In case position is provided in query
         // a GeoJSON 
 
-        if (arg.latitude && arg.longitude){
-            const position = [arg.latitude, arg.longitude]
+        if (arg.latitude && arg.longitude && arg.latitude > -180 && arg.latitude < 180 && arg.longitude > -180 && arg.longitude<180)
+        {
             let range = 20000; // default range 20 km
-            if (arg.km_range) range = Math.round(arg.km_range*1000) // reference unit in input 1 km
+            if (arg.km_radius) range = Math.round(arg.km_radius*1000) // reference unit in input 1 km
 
             opt = {
                 position: {
-                    $near : {
-                    $geometry: {
-                    type: "Point" ,
-                    coordinates: position
-                },
-                    $maxDistance: range,
-                    $minDistance: 0
-                }
+                    $geoWithin : {
+                        $box: [
+                            [arg.latitude-range,arg.longitude-range],
+                            [arg.latitude+range,arg.longitude+range]
+                        ]
+                    }
                 }
             }
-            
         }
+
         const query = this.service.find(opt).select(selected);
 
         const page : number = arg.page || 1;

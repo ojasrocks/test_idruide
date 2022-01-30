@@ -3,29 +3,30 @@ import { IsNumber , IsOptional} from 'class-validator';
 
 @ArgsType()
 export class QueryArgs {
+  
   @Field()
-  @IsNumber()
   @IsOptional()
+  @IsNumber()
   longitude?: number
 
   @Field()
-  @IsNumber()
   @IsOptional()
+  @IsNumber()
   latitude?: number
 
   @Field()
-  @IsNumber()
   @IsOptional()
-  km_range?: number
+  @IsNumber()
+  km_radius?: number
   
   @Field()
-  @IsNumber()
   @IsOptional()
+  @IsNumber()
   page?: number
 
   @Field()
-  @IsNumber()
   @IsOptional()
+  @IsNumber()
   limit?: number
 
 }

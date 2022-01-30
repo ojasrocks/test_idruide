@@ -7,7 +7,7 @@ import { InstitutionsResolver } from './institutions.resolver';
 
 
 @Module({
-  providers: [InstitutionsService],
+  providers: [InstitutionsService,InstitutionsResolver],
   controllers: [InstitutionsController],
   imports: [
     MongooseModule.forFeature([{ name: Institution.name, schema: InstitutionSchema }]),
@@ -15,4 +15,4 @@ import { InstitutionsResolver } from './institutions.resolver';
 })
 export class InstitutionsModule {}
 
-// ,InstitutionsResolver
+// ,

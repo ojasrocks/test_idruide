@@ -12,7 +12,7 @@ export class inputArgs {
 
     @IsNumberString()
     @IsOptional()
-    km_range?: string
+    km_radius?: string
     
     @IsNumberString()
     @IsOptional()
