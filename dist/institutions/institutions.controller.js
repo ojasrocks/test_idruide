@@ -24,24 +24,21 @@ let InstitutionsController = class InstitutionsController {
         let opt = {};
         const selected = [
             'Identifiant_de_l_etablissement',
-            'Code postal',
+            'Code_postal',
             'Type_etablissement',
             'Libelle_region'
         ];
         if (args.latitude && args.longitude && parseFloat(args.latitude) > -180 && parseFloat(args.latitude) < 180 && parseFloat(args.longitude) > -180 && parseFloat(args.longitude) < 180) {
-            const point_position = [parseFloat(args.latitude), parseFloat(args.longitude)];
             let range = 20000;
-            if (args.km_range)
-                range = Math.round(parseFloat(args.km_range) * 1000);
+            if (args.km_radius)
+                range = Math.round(parseFloat(args.km_radius) * 1000);
             opt = {
                 position: {
-                    $near: {
-                        $geometry: {
-                            "type": "Point",
-                            coordinates: point_position
-                        },
-                        $maxDistance: range,
-                        $minDistance: 0
+                    $geoWithin: {
+                        $box: [
+                            [parseFloat(args.latitude) - range, parseFloat(args.longitude) - range],
+                            [parseFloat(args.latitude) + range, parseFloat(args.longitude) + range]
+                        ]
                     }
                 }
             };

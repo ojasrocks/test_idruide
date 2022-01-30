@@ -12,11 +12,12 @@ const institutions_service_1 = require("./institutions.service");
 const institutions_controller_1 = require("./institutions.controller");
 const institutions_schema_1 = require("./institutions.schema");
 const mongoose_1 = require("@nestjs/mongoose");
+const institutions_resolver_1 = require("./institutions.resolver");
 let InstitutionsModule = class InstitutionsModule {
 };
 InstitutionsModule = __decorate([
     (0, common_1.Module)({
-        providers: [institutions_service_1.InstitutionsService],
+        providers: [institutions_service_1.InstitutionsService, institutions_resolver_1.InstitutionsResolver],
         controllers: [institutions_controller_1.InstitutionsController],
         imports: [
             mongoose_1.MongooseModule.forFeature([{ name: institutions_schema_1.Institution.name, schema: institutions_schema_1.InstitutionSchema }]),

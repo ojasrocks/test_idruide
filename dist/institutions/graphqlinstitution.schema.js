@@ -45,7 +45,7 @@ __decorate([
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], GqInstitution.prototype, "Code postal", void 0);
+], GqInstitution.prototype, "Code_postal", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)

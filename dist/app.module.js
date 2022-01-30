@@ -10,13 +10,20 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const institutions_module_1 = require("./institutions/institutions.module");
 const mongoose_1 = require("@nestjs/mongoose");
+const graphql_1 = require("@nestjs/graphql");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             mongoose_1.MongooseModule.forRoot('mongodb://localhost/', {
-                dbName: 'education'
+                dbName: 'education',
+                autoIndex: false
+            }),
+            graphql_1.GraphQLModule.forRoot({
+                autoSchemaFile: true,
+                playground: true,
+                sortSchema: true,
             }),
             institutions_module_1.InstitutionsModule
         ],

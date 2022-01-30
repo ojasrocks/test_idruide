@@ -27,7 +27,7 @@ __decorate([
     (0, class_validator_1.IsNumberString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], inputArgs.prototype, "km_range", void 0);
+], inputArgs.prototype, "km_radius", void 0);
 __decorate([
     (0, class_validator_1.IsNumberString)(),
     (0, class_validator_1.IsOptional)(),

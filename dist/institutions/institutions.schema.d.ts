@@ -1,6 +1,11 @@
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 export declare type InstitutionDocument = Institution & Document;
+declare class Position {
+    type: string;
+    coordinates: Array<number>;
+}
 export declare class Institution {
+    _id: Types.ObjectId;
     Identifiant_de_l_etablissement: string;
     Nom_etablissement: string;
     Type_etablissement: string;
@@ -8,7 +13,7 @@ export declare class Institution {
     Adresse_1: string;
     Adresse_2: string;
     Adresse_3: string;
-    'Code postal': string;
+    Code_postal: string;
     Code_commune: string;
     Nom_commune: string;
     Code_departement: string;
@@ -43,10 +48,7 @@ export declare class Institution {
     SIREN_SIRET: string;
     Nombre_d_eleves: string;
     Fiche_onisep: string;
-    position: {
-        "type": string;
-        coordinates: [Number];
-    };
+    position: Position;
     Type_contrat_prive: string;
     Libelle_departement: string;
     Libelle_academie: string;
@@ -75,3 +77,4 @@ export declare class Institution {
     libelle_bassin_formation: string;
 }
 export declare const InstitutionSchema: import("mongoose").Schema<Document<Institution, any, any>, import("mongoose").Model<Document<Institution, any, any>, any, any, any>, any, any>;
+export {};

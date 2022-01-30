@@ -16,32 +16,32 @@ let QueryArgs = class QueryArgs {
 };
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], QueryArgs.prototype, "longitude", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], QueryArgs.prototype, "latitude", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], QueryArgs.prototype, "km_range", void 0);
+], QueryArgs.prototype, "km_radius", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], QueryArgs.prototype, "page", void 0);
 __decorate([
     (0, graphql_1.Field)(),
-    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], QueryArgs.prototype, "limit", void 0);
 QueryArgs = __decorate([

@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InstitutionsResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const graphqlinstitution_schema_1 = require("./graphqlinstitution.schema");
+const institutions_schema_1 = require("./institutions.schema");
 const institutions_service_1 = require("./institutions.service");
 const graphqlquery_args_1 = require("./graphqlquery.args");
 let InstitutionsResolver = class InstitutionsResolver {
@@ -25,24 +25,21 @@ let InstitutionsResolver = class InstitutionsResolver {
         let opt = {};
         const selected = [
             'Identifiant_de_l_etablissement',
-            'Code postal',
+            'Code_postal',
             'Type_etablissement',
             'Libelle_region'
         ];
-        if (arg.latitude && arg.longitude) {
-            const position = [arg.latitude, arg.longitude];
+        if (arg.latitude && arg.longitude && arg.latitude > -180 && arg.latitude < 180 && arg.longitude > -180 && arg.longitude < 180) {
             let range = 20000;
-            if (arg.km_range)
-                range = Math.round(arg.km_range * 1000);
+            if (arg.km_radius)
+                range = Math.round(arg.km_radius * 1000);
             opt = {
                 position: {
-                    $near: {
-                        $geometry: {
-                            type: "Point",
-                            coordinates: position
-                        },
-                        $maxDistance: range,
-                        $minDistance: 0
+                    $geoWithin: {
+                        $box: [
+                            [arg.latitude - range, arg.longitude - range],
+                            [arg.latitude + range, arg.longitude + range]
+                        ]
                     }
                 }
             };
@@ -74,7 +71,7 @@ let InstitutionsResolver = class InstitutionsResolver {
     }
 };
 __decorate([
-    (0, graphql_1.Query)(returns => [graphqlinstitution_schema_1.GqInstitution]),
+    (0, graphql_1.Query)(returns => [institutions_schema_1.Institution]),
     __param(0, (0, graphql_1.Args)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [graphqlquery_args_1.QueryArgs]),

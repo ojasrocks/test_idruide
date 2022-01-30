@@ -8,7 +8,7 @@ export declare class GqInstitution {
     Adresse_1: string;
     Adresse_2: string;
     Adresse_3: string;
-    'Code postal': string;
+    Code_postal: string;
     Code_commune: string;
     Nom_commune: string;
     Code_departement: string;
