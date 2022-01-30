@@ -11,9 +11,9 @@ Database:
 MongoDB. Considered installed in localhost
 
 Bonus:
-- Search by Geo Localization : In the Controller is present, but commented, the part of code that sets the filter for geolocalization.<br> The reason of this choice is because is thrown the error <code>$geoNear, $near, and $nearSphere are not allowed in this context</code>, and has to be fixed. <br><br> When performing geo search on <code>shell</code> using <code>mongosh</code> the database doesn't throw error. 
+- Search by Geo Localization : Completed
 
-- GraphQL API : Not completed
+- GraphQL API : Completed
 
 How to initialize the database.
 
@@ -31,14 +31,19 @@ Steps used to initialize the database are reported in the code at
 
 <code>src/institutions/seeding/csv_to_json/csv_json.js</code>
 
-The origin file containing population for database is <code>fr-en-annuaire-education.csv</code> , a <code>.csv</code> file with <code>;</code> delimiter. <br><br>
-The script reads the <code>.csv</code> file and converts to json object using appropriate options described in the variable <code>opt</code>. <br><br>
-From the resulting json object is obtained an object where the </code>position</code> field value is adjusted to GeoJSON Point Type format.<br><br>
+The url containing population for database is <code>https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B</code> , a <code>.csv</code> file with <code>;</code> delimiter. <br><br>
+## Note ##
+Direct access to a JSON file could be obtained modifing the url to fetch in 
+<code>https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/download/?format=json&timezone=Europe/Berlin&lang=en</code>
+<br><br>
+The script do fetch the csv file and converts it to json object using appropriate options described in the variable <code>opt</code>. <br><br>
+<br><br>
+From the resulting json object is obtained an object where the </code>position</code> field value is adjusted to GeoJSON Point Type format, and where the origin key field 'Code postal' is substituted with 'Code_postal'.<br><br>
+
 The entities where <code>postiion</code> value is not defined have been set with a default <code>[0,0]</code> value as coordinates.<br><br>
 Then the index <code>{ position : '2dsphere' }</code> is created.<br><br>
 The script exits.
 
 # Conclusions
 
-The base task has been completed.<br><br>
-Remaining bouns(es) require fix work.
+The base task and bounuses have been completed.
