@@ -47,4 +47,4 @@ The script exits.
 
 # Conclusions
 
-The base task and bounuses have been completed.
+The base task and bonuses have been completed.
