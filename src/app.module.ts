@@ -6,7 +6,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/',{
-      dbName:'education'
+      dbName:'education',
+      autoIndex:false
+    }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: true,
+      playground: true,
+      sortSchema: true,
     }),
     InstitutionsModule],
   controllers: [],
