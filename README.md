@@ -32,7 +32,7 @@ Steps used to initialize the database are reported in the code at
 <code>src/institutions/seeding/csv_to_json/csv_json.js</code>
 
 The url containing population for database is <code>https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B</code> , a <code>.csv</code> file with <code>;</code> delimiter. <br><br>
-## Note ##
+### Note ###
 Direct access to a JSON file could be obtained modifing the url to fetch in 
 <code>https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/download/?format=json&timezone=Europe/Berlin&lang=en</code>
 <br><br>
