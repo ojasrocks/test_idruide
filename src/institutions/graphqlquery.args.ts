@@ -3,12 +3,12 @@ import { IsNumber , IsArray, IsOptional} from 'class-validator';
 
 @ArgsType()
 export class AllArgs{
-  @Field(()=> Int)
+  @Field(type => Int, { nullable: true })
   @IsOptional()
   @IsNumber()
   page?: number
 
-  @Field(()=> Int)
+  @Field(type => Int, { nullable: true })
   @IsOptional()
   @IsNumber()
   limit?: number
@@ -18,22 +18,22 @@ export class AllArgs{
 @ArgsType()
 export class QueryArgs extends AllArgs {
   
-  @Field(()=>[[String,String]])
+  @Field(type =>[[String,String]], { nullable: true })
   @IsOptional()
   @IsArray()
   filter?: [[string,string]]
 
-  @Field(()=> Float)
+  @Field(type => Float,  { nullable: true })
   @IsOptional()
   @IsNumber()
   longitude?: number
 
-  @Field(()=> Float)
+  @Field(type => Float, { nullable: true })
   @IsOptional()
   @IsNumber()
   latitude?: number
 
-  @Field(()=> Float)
+  @Field(type => Float, { nullable: true })
   @IsOptional()
   @IsNumber()
   range?: number
